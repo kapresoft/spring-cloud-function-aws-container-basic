@@ -1,0 +1,14 @@
+# application config
+
+spring:
+  application:
+    name: "spring-cloud-function-aws-container-basic"
+
+spring.cloud.function:
+  definition: "uppercase"
+
+logging:
+    level:
+        root: info
+        '[com.kapresoft]': warn
+        '[org.springframework]': warn

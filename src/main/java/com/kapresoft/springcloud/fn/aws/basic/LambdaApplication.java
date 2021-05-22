@@ -19,20 +19,27 @@ public class LambdaApplication {
 	}
 
 	@Bean
-	Function<String, String> uppercase() {
-		return value -> {
-			final String upperCased = value.toUpperCase(Locale.getDefault());
-			log.info("Upper-casing: [{}] to [{}]", value, upperCased);
-			return upperCased;
+	Function<String, Response> uppercase() {
+		return request -> {
+			final String upperCased = request.toUpperCase(Locale.getDefault());
+			log.info("Upper-casing: [{}] to [{}]", request, upperCased);
+
+			return Response.builder()
+					.request(request)
+					.response(upperCased)
+					.build();
 		};
 	}
 
 	@Bean
-	Function<String, String> lowercase() {
-		return value -> {
-			final String lowerCased = value.toLowerCase(Locale.getDefault());
-			log.info("Lower-casing: [{}] to [{}]", value, lowerCased);
-			return lowerCased;
+	Function<String, Response> lowercase() {
+		return request -> {
+			final String lowerCased = request.toLowerCase(Locale.getDefault());
+			log.info("Lower-casing: [{}] to [{}]", request, lowerCased);
+			return Response.builder()
+					.request(request)
+					.response(lowerCased)
+					.build();
 		};
 	}
 

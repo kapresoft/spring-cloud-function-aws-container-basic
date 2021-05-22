@@ -1,0 +1,4 @@
+# application config
+
+spring.cloud.function:
+  definition: "lowercase"
